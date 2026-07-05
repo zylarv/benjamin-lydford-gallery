@@ -123,7 +123,7 @@ function ArtworkPage() {
       {artwork.images.length > 1 && (
         <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-            {artwork.images.slice(1).map((src, i) => (
+            {artwork.images.slice(1).map((src: string, i: number) => (
               <div key={src} className="bg-muted">
                 <img
                   src={src}
