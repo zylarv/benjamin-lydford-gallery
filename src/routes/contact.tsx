@@ -35,7 +35,7 @@ function Contact() {
     const body = encodeURIComponent(
       `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`,
     );
-    window.location.href = `mailto:hello@benjaminlydford.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:artbybenjaminlydford@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -75,7 +75,7 @@ function Contact() {
               <p className="font-display text-2xl">Thank you.</p>
               <p className="mt-3 text-sm text-muted-foreground">
                 Your email client should have opened. If not, please write to
-                hello@benjaminlydford.com.
+                artbybenjaminlydford@gmail.com.
               </p>
             </div>
           ) : (
