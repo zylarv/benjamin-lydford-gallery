@@ -1,4 +1,4 @@
-import { Link, Outlet } from "@tanstack/react-router";
+import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
 const nav = [
@@ -11,9 +11,12 @@ const nav = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-sm border-b border-border/60">
+    <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-sm border-b border-border/60 animate-fade-in">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="font-display text-lg md:text-xl tracking-wide">
+        <Link
+          to="/"
+          className="font-display text-lg md:text-xl tracking-wide link-underline"
+        >
           Benjamin Lydford
         </Link>
         <nav className="flex items-center gap-6 md:gap-9 text-[13px] uppercase tracking-[0.18em]">
@@ -21,7 +24,7 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -58,10 +61,15 @@ export function SiteFooter() {
 }
 
 export function SiteLayout({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      {/* Curtain that lifts on every route change */}
+      <div key={pathname} className="page-veil" aria-hidden />
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main key={`m-${pathname}`} className="flex-1 animate-fade-in">
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );
