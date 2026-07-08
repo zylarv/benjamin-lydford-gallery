@@ -46,7 +46,7 @@ export function SiteFooter() {
           <a
             href="https://www.instagram.com/_benjaminmichael/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
           >
             Instagram
