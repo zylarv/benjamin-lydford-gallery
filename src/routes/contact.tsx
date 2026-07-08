@@ -61,7 +61,7 @@ function Contact() {
             <a
               href="https://www.instagram.com/_benjaminmichael/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-block border-b border-foreground pb-1 hover:text-accent transition-colors"
             >
               @_benjaminmichael
