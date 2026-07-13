@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Australian abstract expressionist painter. Available works, archive and studio enquiries.",
+          "Benjamin Lydford is an Australian abstract expressionist painter working in acrylic, oil and charcoal. Explore available works, archive and studio enquiries.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Benjamin Lydford" },
@@ -99,8 +99,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Benjamin Lydford | Abstract Artist" },
       {
         name: "twitter:description",
-        content: "Australian abstract expressionist painter.",
+        content: "Benjamin Lydford is an Australian abstract expressionist painter working in acrylic, oil and charcoal. Explore available works, archive and studio enquiries.",
       },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7bc0e1e-e026-442c-a588-fbe150616b2e/id-preview-389095cd--5188ee9e-24b0-4618-9392-653aa1374508.lovable.app-1783491366102.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7bc0e1e-e026-442c-a588-fbe150616b2e/id-preview-389095cd--5188ee9e-24b0-4618-9392-653aa1374508.lovable.app-1783491366102.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
