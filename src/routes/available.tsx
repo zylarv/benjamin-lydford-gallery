@@ -1,23 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/available")({
   head: () => ({
     meta: [
-      { title: "Available Work | Benjamin Lydford" },
+      { title: "Available Paintings | Benjamin Lydford" },
       {
         name: "description",
         content:
-          "Current paintings available for purchase by Australian abstract artist Benjamin Lydford.",
+          "Current abstract paintings available for purchase from Australian artist Benjamin Lydford. Acrylic, oil and charcoal on canvas. Gallery and commission enquiries welcome.",
       },
-      { property: "og:title", content: "Available Work | Benjamin Lydford" },
+      { property: "og:title", content: "Available Paintings | Benjamin Lydford" },
       {
         property: "og:description",
-        content: "Current paintings available for purchase.",
+        content:
+          "Current abstract paintings available from Australian artist Benjamin Lydford.",
       },
-      { property: "og:url", content: "/available" },
+      { property: "og:url", content: SITE_URL + "/available" },
     ],
-    links: [{ rel: "canonical", href: "/available" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/available" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Available Paintings",
+          url: SITE_URL + "/available",
+          about: { "@type": "Person", name: "Benjamin Lydford" },
+        }),
+      },
+    ],
   }),
   component: Available,
 });

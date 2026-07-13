@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://a13517358135939.lovable.app/sitemap.xml

@@ -1,24 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About | Benjamin Lydford" },
+      { title: "About Benjamin Lydford | Australian Abstract Painter" },
       {
         name: "description",
         content:
-          "Biography and studio statement of Benjamin Lydford, Australian abstract expressionist painter based in Victoria.",
+          "Biography and studio statement of Benjamin Lydford, Australian abstract expressionist painter based in Victoria, working in acrylic, oil and charcoal on canvas.",
       },
-      { property: "og:title", content: "About | Benjamin Lydford" },
+      { property: "og:title", content: "About Benjamin Lydford | Australian Abstract Painter" },
       {
         property: "og:description",
         content:
-          "Biography and studio statement of Australian abstract painter Benjamin Lydford.",
+          "Biography and studio statement of Australian abstract expressionist painter Benjamin Lydford.",
       },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: SITE_URL + "/about" },
+      { property: "og:type", content: "profile" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          url: SITE_URL + "/about",
+          mainEntity: { "@type": "Person", name: "Benjamin Lydford" },
+        }),
+      },
+    ],
   }),
   component: About,
 });

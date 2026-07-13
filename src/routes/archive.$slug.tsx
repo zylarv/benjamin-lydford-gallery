@@ -2,6 +2,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { artworks } from "@/data/artworks";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/archive/$slug")({
   loader: ({ params }) => {
     const artwork = artworks.find((a) => a.slug === params.slug);
@@ -18,8 +20,9 @@ export const Route = createFileRoute("/archive/$slug")({
       };
     }
     const a = loaderData.artwork;
-    const title = `${a.title} | Benjamin Lydford`;
-    const desc = `${a.title} — ${a.medium}. ${a.dimensions}. Painting by Australian abstract artist Benjamin Lydford.`;
+    const url = `${SITE_URL}/archive/${params.slug}`;
+    const title = `${a.title} — ${a.medium.split(" on ")[0]} | Benjamin Lydford`;
+    const desc = `${a.title} — ${a.medium}. ${a.dimensions}. Abstract expressionist painting by Australian artist Benjamin Lydford.`;
     return {
       meta: [
         { title },
@@ -28,10 +31,10 @@ export const Route = createFileRoute("/archive/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
         { property: "og:image", content: a.images[0] },
-        { property: "og:url", content: `/archive/${params.slug}` },
+        { property: "og:url", content: url },
         { name: "twitter:image", content: a.images[0] },
       ],
-      links: [{ rel: "canonical", href: `/archive/${params.slug}` }],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         {
           type: "application/ld+json",
@@ -42,9 +45,28 @@ export const Route = createFileRoute("/archive/$slug")({
             artMedium: a.medium,
             artform: "Painting",
             artworkSurface: "Canvas",
-            creator: { "@type": "Person", name: "Benjamin Lydford" },
-            image: a.images[0],
+            artStyle: a.style,
+            width: a.dimensions,
+            creator: {
+              "@type": "Person",
+              name: "Benjamin Lydford",
+              nationality: { "@type": "Country", name: "Australia" },
+            },
+            image: a.images,
+            url,
             description: desc,
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+              { "@type": "ListItem", position: 2, name: "Archive", item: SITE_URL + "/archive" },
+              { "@type": "ListItem", position: 3, name: a.title, item: url },
+            ],
           }),
         },
       ],
@@ -84,7 +106,7 @@ function ArtworkPage() {
           <div className="bg-muted">
             <img
               src={artwork.images[0]}
-              alt={`${artwork.title} — painting by Benjamin Lydford`}
+              alt={`${artwork.title} — ${artwork.medium}, ${artwork.dimensions.split(" / ")[0]}. Abstract painting by Benjamin Lydford.`}
               className="w-full h-auto object-contain"
             />
           </div>
