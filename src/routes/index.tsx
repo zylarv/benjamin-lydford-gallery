@@ -2,7 +2,41 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { artworks } from "@/data/artworks";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Benjamin Lydford | Australian Abstract Expressionist Painter" },
+      {
+        name: "description",
+        content:
+          "Official site of Benjamin Lydford, Australian abstract expressionist painter working in acrylic, oil and charcoal on canvas. View available paintings, sold archive and studio enquiries.",
+      },
+      { property: "og:title", content: "Benjamin Lydford | Australian Abstract Expressionist Painter" },
+      {
+        property: "og:description",
+        content:
+          "Official site of Australian abstract painter Benjamin Lydford. Available work, archive and studio enquiries.",
+      },
+      { property: "og:url", content: SITE_URL + "/" },
+      { property: "og:image", content: artworks[0].images[0] },
+      { name: "twitter:image", content: artworks[0].images[0] },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL + "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Benjamin Lydford",
+          url: SITE_URL + "/",
+          author: { "@type": "Person", name: "Benjamin Lydford" },
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
@@ -14,7 +48,8 @@ function Index() {
         <div className="relative h-[calc(100vh-5rem)] min-h-[560px] w-full overflow-hidden bg-muted">
           <img
             src={hero.images[0]}
-            alt={`${hero.title} — painting by Benjamin Lydford`}
+            alt={`${hero.title} — abstract expressionist painting by Benjamin Lydford, Australian artist`}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover animate-hero-zoom animate-drift"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/60" />
@@ -92,7 +127,7 @@ function Index() {
               <div className="bg-muted aspect-[4/5] overflow-hidden">
                 <img
                   src={a.images[0]}
-                  alt={`${a.title} — painting by Benjamin Lydford`}
+                  alt={`${a.title} — ${a.medium} abstract painting by Australian artist Benjamin Lydford`}
                   loading="lazy"
                   className="artwork-img h-full w-full object-cover"
                 />
