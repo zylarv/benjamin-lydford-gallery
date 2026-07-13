@@ -2,23 +2,47 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Benjamin Lydford" },
+      { title: "Contact Benjamin Lydford | Gallery & Commission Enquiries" },
       {
         name: "description",
         content:
-          "Contact Australian abstract artist Benjamin Lydford for gallery enquiries, commissions and available work.",
+          "Contact Australian abstract artist Benjamin Lydford for gallery enquiries, commissioned paintings and available work. Email artbybenjaminlydford@gmail.com.",
       },
-      { property: "og:title", content: "Contact | Benjamin Lydford" },
+      { property: "og:title", content: "Contact Benjamin Lydford | Gallery & Commission Enquiries" },
       {
         property: "og:description",
-        content: "Gallery enquiries, commissions and available work.",
+        content: "Gallery enquiries, commissioned paintings and available work.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: SITE_URL + "/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          url: SITE_URL + "/contact",
+          mainEntity: {
+            "@type": "Person",
+            name: "Benjamin Lydford",
+            email: "artbybenjaminlydford@gmail.com",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "Studio enquiries",
+              email: "artbybenjaminlydford@gmail.com",
+              areaServed: "Worldwide",
+              availableLanguage: "English",
+            },
+          },
+        }),
+      },
+    ],
   }),
   component: Contact,
 });

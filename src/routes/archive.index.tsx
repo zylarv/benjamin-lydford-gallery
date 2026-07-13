@@ -2,23 +2,48 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { artworks } from "@/data/artworks";
 
+const SITE_URL = "https://a13517358135939.lovable.app";
+
 export const Route = createFileRoute("/archive/")({
   head: () => ({
     meta: [
-      { title: "Archive | Benjamin Lydford" },
+      { title: "Archive | Sold Paintings by Benjamin Lydford" },
       {
         name: "description",
         content:
-          "Archive of sold and previously exhibited paintings by Australian abstract artist Benjamin Lydford.",
+          "Archive of sold and previously exhibited abstract paintings by Australian artist Benjamin Lydford. Acrylic, oil and charcoal on canvas.",
       },
-      { property: "og:title", content: "Archive | Benjamin Lydford" },
+      { property: "og:title", content: "Archive | Sold Paintings by Benjamin Lydford" },
       {
         property: "og:description",
-        content: "Sold and previously exhibited paintings.",
+        content: "Sold and previously exhibited paintings by Benjamin Lydford.",
       },
-      { property: "og:url", content: "/archive" },
+      { property: "og:url", content: SITE_URL + "/archive" },
+      { property: "og:image", content: artworks[0].images[0] },
     ],
-    links: [{ rel: "canonical", href: "/archive" }],
+    links: [{ rel: "canonical", href: SITE_URL + "/archive" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Archive — Paintings by Benjamin Lydford",
+          url: SITE_URL + "/archive",
+          about: { "@type": "Person", name: "Benjamin Lydford" },
+          hasPart: artworks.map((a) => ({
+            "@type": "VisualArtwork",
+            name: a.title,
+            artMedium: a.medium,
+            artform: "Painting",
+            artworkSurface: "Canvas",
+            image: a.images[0],
+            url: `${SITE_URL}/archive/${a.slug}`,
+            creator: { "@type": "Person", name: "Benjamin Lydford" },
+          })),
+        }),
+      },
+    ],
   }),
   component: Archive,
 });
@@ -51,7 +76,7 @@ function Archive() {
               <div className="bg-muted aspect-[4/5] overflow-hidden">
                 <img
                   src={a.images[0]}
-                  alt={`${a.title} — painting by Benjamin Lydford`}
+                  alt={`${a.title} — ${a.medium}, ${a.dimensions.split(" / ")[0]}. Abstract painting by Benjamin Lydford.`}
                   loading="lazy"
                   className="artwork-img h-full w-full object-cover"
                 />
