@@ -48,7 +48,7 @@ function Index() {
       <section className="relative">
         <div className="relative h-[calc(100vh-5rem)] min-h-[560px] w-full overflow-hidden bg-muted grain">
           <img
-            src={heroAsset.url}
+            src={HERO_PATH}
             alt="Across the Garden State — abstract expressionist painting by Benjamin Lydford, Australian artist"
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover animate-hero-zoom animate-drift"
