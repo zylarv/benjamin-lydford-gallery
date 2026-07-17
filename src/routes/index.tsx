@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { artworks } from "@/data/artworks";
-import heroAsset from "@/assets/hero-garden-state.jpg.asset.json";
-
 
 const SITE_URL = "https://a13517358135939.lovable.app";
+const HERO_PATH = "/hero-across-the-garden-state.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,9 +21,8 @@ export const Route = createFileRoute("/")({
           "Official site of Australian abstract painter Benjamin Lydford. Available work, archive and studio enquiries.",
       },
       { property: "og:url", content: SITE_URL + "/" },
-      { property: "og:url", content: SITE_URL + "/" },
-      { property: "og:image", content: heroAsset.url },
-      { name: "twitter:image", content: heroAsset.url },
+      { property: "og:image", content: SITE_URL + HERO_PATH },
+      { name: "twitter:image", content: SITE_URL + HERO_PATH },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/" }],
     scripts: [
