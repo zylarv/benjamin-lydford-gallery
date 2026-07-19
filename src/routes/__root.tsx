@@ -75,11 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Benjamin Lydford | Abstract Artist" },
+      { title: "Benjamin Lydford | Australian Abstract Expressionist Painter" },
       {
         name: "description",
         content:
-          "Benjamin Lydford is an Australian abstract expressionist painter working in acrylic, oil and charcoal. Explore available works, archive and studio enquiries.",
+          "Official site of Benjamin Lydford, Australian abstract expressionist painter working in acrylic, oil and charcoal on canvas. View available paintings, sold archive and studio enquiries.",
       },
       { name: "author", content: "Benjamin Lydford" },
       {
@@ -87,26 +87,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Benjamin Lydford, Ben Lydford, Benjamin Lydford Art, Australian abstract art, Abstract artist, Abstract painter, Australian painter",
       },
-      { property: "og:title", content: "Benjamin Lydford | Abstract Artist" },
+      { property: "og:title", content: "Benjamin Lydford | Australian Abstract Expressionist Painter" },
       {
         property: "og:description",
         content:
-          "Benjamin Lydford is an Australian abstract expressionist painter working in acrylic, oil and charcoal. Explore available works, archive and studio enquiries.",
+          "Official site of Benjamin Lydford, Australian abstract expressionist painter working in acrylic, oil and charcoal on canvas. View available paintings, sold archive and studio enquiries.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Benjamin Lydford" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Benjamin Lydford | Abstract Artist" },
+      { name: "twitter:title", content: "Benjamin Lydford | Australian Abstract Expressionist Painter" },
       {
         name: "twitter:description",
-        content: "Benjamin Lydford is an Australian abstract expressionist painter working in acrylic, oil and charcoal. Explore available works, archive and studio enquiries.",
+        content: "Official site of Benjamin Lydford, Australian abstract expressionist painter working in acrylic, oil and charcoal on canvas. View available paintings, sold archive and studio enquiries.",
       },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7bc0e1e-e026-442c-a588-fbe150616b2e/id-preview-389095cd--5188ee9e-24b0-4618-9392-653aa1374508.lovable.app-1783491366102.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7bc0e1e-e026-442c-a588-fbe150616b2e/id-preview-389095cd--5188ee9e-24b0-4618-9392-653aa1374508.lovable.app-1783491366102.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

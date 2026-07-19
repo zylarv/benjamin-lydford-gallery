@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Official site of Australian abstract painter Benjamin Lydford. Available work, archive and studio enquiries.",
+          "Official site of Benjamin Lydford, Australian abstract expressionist painter working in acrylic, oil and charcoal on canvas. View available paintings, sold archive and studio enquiries.",
       },
       { property: "og:url", content: SITE_URL + "/" },
       { property: "og:image", content: SITE_URL + HERO_PATH },
